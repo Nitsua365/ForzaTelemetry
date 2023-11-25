@@ -25,7 +25,7 @@ function onConnect()
 {
   const { address, port } = server.address();
   console.log(`server listening ${address}:${port}`);
-  intervalId = setInterval(printResult, 100);
+  intervalId = setInterval(printResult, 1000);
 }
 
 function onMessage(msg, rinfo)

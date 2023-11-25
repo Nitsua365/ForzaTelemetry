@@ -16,14 +16,62 @@ class Sled
     this.yaw = this.#readFloat(buffer)
     this.pitch = this.#readFloat(buffer)
     this.roll = this.#readFloat(buffer)
-    this.normalizedSuspensionTravelFrontLeft = this.#readFloat(buffer);
-    this.normalizedSuspensionTravelFrontRight = this.#readFloat(buffer);
-    this.normalizedSuspensionTravelRearLeft = this.#readFloat(buffer);
-    this.normalizedSuspensionTravelRearRight = this.#readFloat(buffer);
-    this.tireSlipRatioFrontLeft = this.#readFloat(buffer);
-    this.tireSlipRatioFrontRight = this.#readFloat(buffer);
-    this.tireSlipRatioRearLeft = this.#readFloat(buffer);
-    this.tireSlipRatioRearRight = this.#readFloat(buffer);
+
+    this.normalizedSuspensionTravelFrontLeft = this.#readFloat(buffer)
+    this.normalizedSuspensionTravelFrontRight = this.#readFloat(buffer)
+    this.normalizedSuspensionTravelRearLeft = this.#readFloat(buffer)
+    this.normalizedSuspensionTravelRearRight = this.#readFloat(buffer)
+
+    this.tireSlipRatioFrontLeft = this.#readFloat(buffer)
+    this.tireSlipRatioFrontRight = this.#readFloat(buffer)
+    this.tireSlipRatioRearLeft = this.#readFloat(buffer)
+    this.tireSlipRatioRearRight = this.#readFloat(buffer)
+
+    this.wheelRotationSpeedFrontLeft = this.#readFloat(buffer)
+    this.wheelRotationSpeedFrontRight = this.#readFloat(buffer)
+    this.wheelRotationSpeedRearLeft = this.#readFloat(buffer)
+    this.wheelRotationSpeedRearRight = this.#readFloat(buffer)
+
+    this.wheelOnRumbleStripFrontLeft = this.#readInt(buffer)
+    this.wheelOnRumbleStripFrontRight = this.#readInt(buffer)
+    this.wheelOnRumbleStripRearLeft = this.#readInt(buffer)
+    this.wheelOnRumbleStripRearRight = this.#readInt(buffer)
+
+    this.wheelInPuddleDepthFrontLeft = this.#readFloat(buffer)
+    this.wheelInPuddleDepthFrontRight = this.#readFloat(buffer)
+    this.wheelInPuddleDepthRearLeft = this.#readFloat(buffer)
+    this.wheelInPuddleDepthRearRight = this.#readFloat(buffer)
+
+    this.surfaceRumbleFrontLeft = this.#readFloat(buffer)
+    this.surfaceRumbleFrontRight = this.#readFloat(buffer)
+    this.surfaceRumbleRearLeft = this.#readFloat(buffer)
+    this.surfaceRumbleRearRight = this.#readFloat(buffer)
+
+    this.tireSlipAngleFrontLeft = this.#readFloat(buffer)
+    this.tireSlipAngleFrontRight = this.#readFloat(buffer)
+    this.tireSlipAngleRearLeft = this.#readFloat(buffer)
+    this.tireSlipAngleRearRight = this.#readFloat(buffer)
+
+    this.tireCombinedSlipFrontLeft = this.#readFloat(buffer)
+    this.tireCombinedSlipFrontRight = this.#readFloat(buffer)
+    this.tireCombinedSlipRearLeft = this.#readFloat(buffer)
+    this.tireCombinedSlipRearRight = this.#readFloat(buffer)
+
+    this.suspensionTravelMetersFrontLeft = this.#readFloat(buffer)
+    this.suspensionTravelMetersFrontRight = this.#readFloat(buffer)
+    this.suspensionTravelMetersRearLeft = this.#readFloat(buffer)
+    this.suspensionTravelMetersRearRight = this.#readFloat(buffer)
+
+    this.carOrdinal = this.#readInt(buffer)
+
+    this.carClass = this.#readInt(buffer)
+
+    this.carPerfIndex = this.#readInt(buffer)
+
+    this.driveTrainType = this.#readInt(buffer)
+
+    this.numCylinders = this.#readInt(buffer)
+
   };
 
   #readInt(buffer)
@@ -58,7 +106,10 @@ class Sled
       currentEngineRpm : ${this.currentEngineRpm},
       acceleration: ${JSON.stringify(this.acceleration, undefined, 2)},
       velocity: ${JSON.stringify(this.velocity, undefined, 2)},
-      angularVelocity: ${JSON.stringify(this.angularVelocity, undefined, 2)}
+      angularVelocity: ${JSON.stringify(this.angularVelocity, undefined, 2)},
+      yaw: ${this.yaw},
+      pitch: ${this.pitch},
+      roll: ${this.roll}
     }`
   }
 };
