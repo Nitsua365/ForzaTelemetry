@@ -10,6 +10,20 @@ class Sled
     this.engineMaxRPM = this.#readFloat(buffer)
     this.engineIdleRPM = this.#readFloat(buffer)
     this.currentEngineRpm = this.#readFloat(buffer)
+    this.acceleration = { X: this.#readFloat(buffer), Y: this.#readFloat(buffer), Z: this.#readFloat(buffer) }
+    this.velocity = { X: this.#readFloat(buffer), Y: this.#readFloat(buffer), Z: this.#readFloat(buffer) }
+    this.angularVelocity = { X: this.#readFloat(buffer), Y: this.#readFloat(buffer), Z: this.#readFloat(buffer) }
+    this.yaw = this.#readFloat(buffer)
+    this.pitch = this.#readFloat(buffer)
+    this.roll = this.#readFloat(buffer)
+    this.normalizedSuspensionTravelFrontLeft = this.#readFloat(buffer);
+    this.normalizedSuspensionTravelFrontRight = this.#readFloat(buffer);
+    this.normalizedSuspensionTravelRearLeft = this.#readFloat(buffer);
+    this.normalizedSuspensionTravelRearRight = this.#readFloat(buffer);
+    this.tireSlipRatioFrontLeft = this.#readFloat(buffer);
+    this.tireSlipRatioFrontRight = this.#readFloat(buffer);
+    this.tireSlipRatioRearLeft = this.#readFloat(buffer);
+    this.tireSlipRatioRearRight = this.#readFloat(buffer);
   };
 
   #readInt(buffer)
@@ -41,7 +55,10 @@ class Sled
       timestamp : ${this.timestamp},
       engineMaxRPM : ${this.engineMaxRPM},
       engineIdleRPM : ${this.engineIdleRPM},
-      currentEngineRpm : ${this.currentEngineRpm}\n
+      currentEngineRpm : ${this.currentEngineRpm},
+      acceleration: ${JSON.stringify(this.acceleration, undefined, 2)},
+      velocity: ${JSON.stringify(this.velocity, undefined, 2)},
+      angularVelocity: ${JSON.stringify(this.angularVelocity, undefined, 2)}
     }`
   }
 };

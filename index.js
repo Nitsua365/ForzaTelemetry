@@ -4,12 +4,14 @@ const server = dgram.createSocket('udp4');
 const { Sled } = require('./Sled')
 
 // data 
+let buffer
 let formattedData;
 let intervalId;
 
 function printResult()
 {
-  console.log(`${formattedData.toString()}`);
+  formattedData = new Sled(buffer);
+  console.log(formattedData.toString());
 }
 
 function onError(err) 
@@ -19,16 +21,16 @@ function onError(err)
   server.close();
 }
 
-function onMessage(msg, rinfo)
-{
-  formattedData = new Sled(msg);
-}
-
 function onConnect()
 {
   const { address, port } = server.address();
   console.log(`server listening ${address}:${port}`);
-  intervalId = setInterval(printResult, 1000);
+  intervalId = setInterval(printResult, 100);
+}
+
+function onMessage(msg, rinfo)
+{
+  buffer = msg;
 }
 
 // events
